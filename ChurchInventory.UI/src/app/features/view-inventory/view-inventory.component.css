@@ -1,0 +1,39 @@
+.details-container {
+  min-width: 450px;
+  padding: 10px 0;
+}
+
+.detail-row {
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.label {
+  width: 150px;
+  font-weight: 600;
+}
+
+.value {
+  flex: 1;
+  color: #555;
+}
+
+mat-dialog-content {
+  max-height: 70vh;
+}
+
+@media (max-width: 600px) {
+  .details-container {
+    min-width: auto;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .label {
+    width: auto;
+  }
+}

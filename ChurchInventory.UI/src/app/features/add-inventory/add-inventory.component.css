@@ -1,0 +1,44 @@
+.inventory-container {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.inventory-card {
+  width: 800px;
+  max-width: 100%;
+}
+
+mat-card-header {
+  margin-bottom: 25px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-form-field:nth-child(3),
+mat-form-field:nth-child(7),
+mat-form-field:nth-child(8) {
+  grid-column: span 2;
+}
+
+.button-container {
+  grid-column: span 2;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+
+  margin-top: 20px;
+}
+
+button {
+  min-width: 120px;
+}

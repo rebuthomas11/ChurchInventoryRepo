@@ -1,0 +1,66 @@
+<h2 mat-dialog-title>
+  Inventory Item Details
+</h2>
+
+<mat-dialog-content>
+
+  <div class="details-container">
+
+    <div class="detail-row">
+      <span class="label">Item Name</span>
+      <span class="value">{{ item.itemName }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Category</span>
+      <span class="value">{{ item.itemCategory || '-' }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Description</span>
+      <span class="value">{{ item.itemDescription || '-' }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Quantity</span>
+      <span class="value">{{ item.quantity }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Unit</span>
+      <span class="value">{{ item.unit || '-' }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Minimum Stock</span>
+      <span class="value">{{ item.minimumStock}}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Location</span>
+      <span class="value">{{ item.location || '-' }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Purchase Date</span>
+      <span class="value">
+        {{ item.purchaseDate ? (item.purchaseDate | date:'dd-MM-yyyy') : '-' }}
+      </span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Created Date</span>
+      <span class="value">
+        {{ item.createdDate ? (item.createdDate | date:'dd-MM-yyyy') : '-' }}
+      </span>
+    </div>
+
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" (click)="close()">
+    Close
+  </button>
+</mat-dialog-actions>
