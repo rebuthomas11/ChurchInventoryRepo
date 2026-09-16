@@ -23,6 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,6 +31,7 @@ import { InventoryListComponent } from './features/list-inventory/list-inventory
 import { ViewInventoryComponent } from './features/view-inventory/view-inventory.component';
 import { UpdateInventoryComponent } from './features/update-inventory/update-inventory.component';
 import { InventoryReportComponent } from './features/inventory-report/inventory-report.component';
+import { LoginComponent } from './features/login/login.component';
 
 
 @NgModule({
@@ -40,6 +42,7 @@ import { InventoryReportComponent } from './features/inventory-report/inventory-
     ViewInventoryComponent,
     UpdateInventoryComponent,
     InventoryReportComponent,
+    LoginComponent,
     
   ],
   imports: [
@@ -64,6 +67,7 @@ import { InventoryReportComponent } from './features/inventory-report/inventory-
     MatDialogModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
+    MatCheckboxModule,
     HttpClientModule
   ],
   providers: [],

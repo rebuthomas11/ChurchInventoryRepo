@@ -159,7 +159,7 @@ private formatDate(date: Date): string {
   this.inventoryForm.markAsUntouched();
 }
 gotoDashboard():void{
-this.router.navigate(['/']);
+this.router.navigate(['dashboard']);
 }
 }
 export class CustomErrorStateMatcher implements ErrorStateMatcher {

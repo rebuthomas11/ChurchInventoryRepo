@@ -178,6 +178,6 @@ reportForm!: FormGroup;
   doc.save('Inventory_Report.pdf');
 }
 gotoDashboard():void{
-this.router.navigate(['/']);
+this.router.navigate(['dashboard']);
 }
 }
