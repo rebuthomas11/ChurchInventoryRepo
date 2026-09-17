@@ -1,5 +1,4 @@
-﻿using InventoryAPI.Data;
-using InventoryAPI.Interfaces;
+﻿using InventoryAPI.Interfaces;
 using InventoryAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,8 +8,8 @@ namespace InventoryAPI.Services
 {
     public class InventoryService : IInventoryIDetails
     {
-        private readonly ApplicationDbContext _dbContext;
-        public InventoryService(ApplicationDbContext dbContext)
+        private readonly ChurchInventoryContext _dbContext;
+        public InventoryService(ChurchInventoryContext dbContext)
         {
             _dbContext = dbContext;
         }
