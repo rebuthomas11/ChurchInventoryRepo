@@ -10,6 +10,9 @@ import {
 
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
+import { ILoginRequest } from 'src/app/core/models/auth.model';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class CustomErrorStateMatcher implements ErrorStateMatcher {
 
@@ -36,23 +39,25 @@ export class LoginComponent implements OnInit {
 
   hidePassword = true;
 
+  isLoading=false;
+
   matcher: CustomErrorStateMatcher =
     new CustomErrorStateMatcher();
 
 
-  constructor(private fb: FormBuilder, private route:Router) {}
+  constructor(private fb: FormBuilder, private route:Router,private authService:AuthService, private snackBar:MatSnackBar) {}
 
 
   ngOnInit(): void {
 
     this.loginForm = this.fb.group({
 
-      username: [
+      loginName: [
         '',
         Validators.required
       ],
 
-      password: [
+      loginPassword: [
         '',
         Validators.required
       ],
@@ -64,30 +69,85 @@ export class LoginComponent implements OnInit {
   }
 
 
-  get username() {
-    return this.loginForm.get('username');
+  get loginName() {
+    return this.loginForm.get('loginName');
   }
 
 
-  get password() {
-    return this.loginForm.get('password');
+  get loginPassword() {
+    return this.loginForm.get('loginPassword');
   }
 
 
   login(): void {
 
     if (this.loginForm.invalid) {
-
       this.loginForm.markAllAsTouched();
-
       return;
     }
 
-    console.log(
-      'Login details:',
-      this.loginForm.value
-      
-    );
-this.route.navigate(['dashboard']);
+    const request: ILoginRequest = {
+      loginName: this.loginForm.value.loginName,
+      loginPassword: this.loginForm.value.loginPassword
+    };
+
+    this.isLoading = true;
+
+    this.authService.login(request)
+      .subscribe({
+
+        next: response => {
+
+          this.authService.saveLoginDetails(
+            response,
+            this.loginForm.value.rememberMe
+          );
+
+          this.isLoading = false;
+
+          this.snackBar.open(
+            'Login successful',
+            'Close',
+            {
+              duration: 3000
+            }
+          );
+
+          this.route.navigate(['/dashboard']);
+        },
+
+        error: error => {
+
+          this.isLoading = false;
+
+          console.error('Login failed:', error);
+
+          if (error.status === 401) {
+
+            this.snackBar.open(
+              'Invalid login name or password',
+              'Close',
+              {
+                duration: 3000
+              }
+            );
+
+          }
+          else {
+
+            this.snackBar.open(
+              'Unable to login. Please try again.',
+              'Close',
+              {
+                duration: 3000
+              }
+            );
+
+          }
+
+        }
+
+      });
+
   }
 }

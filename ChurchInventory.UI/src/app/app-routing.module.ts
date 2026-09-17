@@ -4,11 +4,13 @@ import { AddInventoryComponent } from './features/add-inventory/add-inventory.co
 import { InventoryListComponent } from './features/list-inventory/list-inventory.component';
 import { InventoryReportComponent } from './features/inventory-report/inventory-report.component';
 import { LoginComponent } from './features/login/login.component';
+import { authGuard } from './core/guards/auth.guard';
+
 const routes: Routes = [
  { path:'', component:LoginComponent},
- { path:'dashboard',component:InventoryListComponent},
- { path:'add-inventory',component:AddInventoryComponent},
- { path:'inventory-report', component:InventoryReportComponent}
+ { path:'dashboard',component:InventoryListComponent,canActivate:[authGuard]},
+ { path:'add-inventory',component:AddInventoryComponent,canActivate:[authGuard]},
+ { path:'inventory-report', component:InventoryReportComponent,canActivate:[authGuard]}
 ];
 
 @NgModule({

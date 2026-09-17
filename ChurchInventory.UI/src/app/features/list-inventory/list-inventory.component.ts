@@ -10,6 +10,7 @@ import { ViewInventoryComponent } from '../view-inventory/view-inventory.compone
 import { UpdateInventoryComponent } from '../update-inventory/update-inventory.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-list-inventory',
@@ -43,7 +44,8 @@ export class InventoryListComponent implements OnInit,AfterViewInit {
     private inventoryService: InventoryService,
     private snackBar: MatSnackBar,
     private route:Router,
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private authService:AuthService
   ) {}
 totalItems = 0;
 inStockItems = 0;
@@ -237,4 +239,10 @@ console.log('Dialog result purchase date:', result.purchaseDate);
       }
     });
   } 
+  logout(): void {
+
+  this.authService.logout();
+
+  this.route.navigate(['/']);
+}
 }

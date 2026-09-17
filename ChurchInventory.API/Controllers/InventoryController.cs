@@ -1,10 +1,12 @@
 ﻿using InventoryAPI.Interfaces;
 using InventoryAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InventoryAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
    

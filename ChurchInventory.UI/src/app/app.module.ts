@@ -33,6 +33,9 @@ import { UpdateInventoryComponent } from './features/update-inventory/update-inv
 import { InventoryReportComponent } from './features/inventory-report/inventory-report.component';
 import { LoginComponent } from './features/login/login.component';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -70,7 +73,13 @@ import { LoginComponent } from './features/login/login.component';
     MatCheckboxModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+     {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -34,7 +34,7 @@ namespace InventoryAPI.Controllers
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
             if (string.IsNullOrWhiteSpace(request.LoginName) ||
-            string.IsNullOrWhiteSpace(request.Password))
+            string.IsNullOrWhiteSpace(request.LoginPassword))
             {
                 return BadRequest(
                     "Login name and password are required.");
